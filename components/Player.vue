@@ -53,7 +53,7 @@ export default {
   display: flex;
   justify-content: center;
 }
-button {
+.v-btn {
   font-size: 1.5rem;
   font-weight: bold;
   width: 120px;
