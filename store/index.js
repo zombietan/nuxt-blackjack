@@ -1,3 +1,4 @@
+const BLACKJACK = 21
 
 const deck = () => {
   const deck = [];
@@ -17,9 +18,6 @@ const calc = hand => {
   const points = hand.map(card => card.number > 10 ? 10 : card.number)
   const sum = points.reduce((ret, cur) => ret + cur)
 
-  if (sum > 21) {
-    return 'Bust'
-  }
   // 合計が11以下で1(A)を含むなら+10する
   if (sum <= 11 && points.some(a => a === 1)) {
     return sum + 10
@@ -70,9 +68,9 @@ export const getters = {
   // ディーラーの点数
   getDealerPoints: state => calc(state.dealer.hand),
   // プレイヤーがバーストしているか
-  isPlayerBust: state => 'Bust' === calc(state.player.hand),
+  isPlayerBust: (state, getters) => BLACKJACK < getters.getPlayerPoints,
   // ディーラーがバーストしているか
-  isDealerBust: state => 'Bust' === calc(state.dealer.hand),
+  isDealerBust: (state, getters) => BLACKJACK < getters.getDealerPoints,
   // Standボタンが押されたか
   isPushStandButton: state => state.pushStandButton,
   // ボタン表示の状態の切り替え
@@ -94,7 +92,11 @@ export const getters = {
       return 'Welcome to Black Jack'
     }
 
-    return `Dealer : ${getters.getDealerPoints} / Player : ${getters.getPlayerPoints}`
+    const dealerPoints = BLACKJACK >= getters.getDealerPoints ? getters.getDealerPoints : 'Bust' 
+
+    const playerPoints = BLACKJACK >= getters.getPlayerPoints ? getters.getPlayerPoints : 'Bust' 
+
+    return `Dealer : ${dealerPoints} / Player : ${playerPoints}`
   },
   // 勝敗結果の表示のパターン
   resultMessage: (state, getters) => {
@@ -102,11 +104,15 @@ export const getters = {
       return ''
     }
 
+    if (getters.isPlayerBust) {
+      return 'You Lose'
+    }
+
     if (getters.getPlayerPoints > getters.getDealerPoints || getters.isDealerBust) {
       return 'You Win'
     }
 
-    if (getters.getPlayerPoints < getters.getDealerPoints || getters.isPlayerBust) {
+    if (getters.getPlayerPoints < getters.getDealerPoints) {
       return 'You Lose'
     }
 
