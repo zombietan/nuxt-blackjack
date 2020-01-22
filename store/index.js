@@ -41,6 +41,11 @@ export const state = () => ({
 })
 
 export const actions = {
+  nuxtServerInit ({dispatch, commit}, {req}) {
+    dispatch('pickTwoCardPlayer')
+    dispatch('pickTwoCardDealer')
+    commit('hideFirstCard')
+  },
   // state初期化のアクション
   initState({commit, getters}) {
     commit('initializeState')
