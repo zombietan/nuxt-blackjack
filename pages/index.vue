@@ -10,10 +10,10 @@ export default {
     Game
   },
 
-  fetch ({store, params}) {
-    store.dispatch('pickTwoCardPlayer')
-    store.dispatch('pickTwoCardDealer')
-    store.commit('hideFirstCard')
-  },
+  // fetch ({store, params}) {
+  //   store.dispatch('pickTwoCardPlayer')
+  //   store.dispatch('pickTwoCardDealer')
+  //   store.commit('hideFirstCard')
+  // },
 }
 </script>
