@@ -1,9 +1,9 @@
-import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
+// import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 import pkg from './package'
 
 export default {
-  mode: 'universal',
-
+  // mode: 'universal',
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -37,14 +37,14 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/style/app.styl'
+    // '~/assets/style/app.styl'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
+    // '@/plugins/vuetify'
   ],
 
   /*
@@ -57,17 +57,9 @@ export default {
   ** Build configuration
   */
   build: {
-    transpile: ['vuetify/lib'],
-    plugins: [new VuetifyLoaderPlugin()],
-    loaders: {
-      stylus: {
-        import: ['~assets/style/variables.styl']
-      }
-    },
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
-  }
+  },
+
+  buildModules: [
+    '@nuxtjs/vuetify'
+  ]
 }

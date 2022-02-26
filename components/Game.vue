@@ -5,7 +5,7 @@
     <player/>
     <div class="message result">{{ resultMessage }}</div>
     <div class="flex" v-show="!showButtons">
-      <v-btn round large color="purple" @click="reset">Again</v-btn>
+      <v-btn rounded large color="purple" @click="reset">Again</v-btn>
     </div>
   </div>
 </template>

@@ -12,15 +12,11 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "nuxt": "^2.11.0",
-    "vuetify": "^1.5.5",
-    "vuetify-loader": "^1.2.1"
+    "@nuxtjs/vuetify": "^1.12.3",
+    "cross-env": "^7.0.3",
+    "nuxt": "^2.15.8"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9",
-    "push-dir": "^0.4.1",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "push-dir": "^0.4.1"
   }
 }

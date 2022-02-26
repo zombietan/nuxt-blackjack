@@ -4,8 +4,8 @@
       <card v-for="(card, index) in getPlayerHand" :key="index" :suit="card.suit" :number="card.number" :hide="card.hide"></card>
     </div>
     <div class="flex" v-show="showButtons">
-      <v-btn large round color="orange" @click="hit">Hit</v-btn>
-      <v-btn large round color="green" @click="stand">Stand</v-btn>
+      <v-btn large rounded color="orange" @click="hit">Hit</v-btn>
+      <v-btn large rounded color="green" @click="stand">Stand</v-btn>
     </div>
 
   </div>
@@ -57,6 +57,8 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   width: 120px;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 </style>
